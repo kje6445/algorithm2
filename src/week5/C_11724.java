@@ -12,9 +12,12 @@ public class C_11724 {
 
     static  void DFS(int i){
         visited[i] = true;
-        for(int c : neighborDot[i])
-            if(visited[c]==false)
+        for(int c: neighborDot[i]) {
+            if (visited[c] == false) {
+                System.out.println("DFS c: "+c);
                 DFS(c);
+            }
+        }
     }
 
      public static void main(String[] args) throws IOException {
