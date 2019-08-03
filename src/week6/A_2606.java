@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
+
+/*
 public class A_2606 {
     //BFS로 문제 풀이
     static ArrayList<Integer>[] linked;
@@ -60,3 +62,4 @@ public class A_2606 {
 
     }
 }
+*/
