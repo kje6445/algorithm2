@@ -14,13 +14,15 @@ public class A_2167 {
 		int M = Integer.parseInt(st.nextToken());
 
 		int[][] arr = new int[N+1][M+1];
+		int[][] sumArr = new int[N+1][M+1];
 
 		for(int i=1; i<=N; i++){		//배열의 수를 입력받는다.
 			 st = new StringTokenizer(br.readLine());
 			for(int j=1; j<=M; j++){
 				arr[i][j] = Integer.parseInt(st.nextToken());
+				sumArr[i][j] = sumArr[i][j-1]+arr[i][j];
 			}
-			System.out.printf(arr[i][1]+" "+arr[i][2]+" "+arr[i][3]);
+			/*System.out.printf(arr[i][1]+" "+arr[i][2]+" "+arr[i][3]);*/
 			System.out.println("");
 		}
 
@@ -38,7 +40,7 @@ public class A_2167 {
 			System.out.printf("arr[x][y] "+arr[x][y]);
 
 			for(int row=i; row<=x; row++){
-				/*sum += arr[row][y] - arr[row][j-1];*/
+				sum += sumArr[row][y] - sumArr[row][j-1];
 			}
 			System.out.println();
 			System.out.println(sum);
