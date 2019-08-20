@@ -3,30 +3,23 @@ package week8;
 import java.util.Scanner;
 
 public class A_1463 {
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
 		int n = sc.nextInt();
-		int count = 0;
 
-		while (n != 1) {
-			if (n % 3 == 0) {
-				n = n/3;
-				System.out.println("1n " + n);
-				count++;
-			} else{
-				n = n - 1;
-				System.out.println("3n " + n);
-				count++;
+		int dp[] = new int[n + 1];
+		dp[0] = dp[1] = 0;
+
+		for (int i = 2; i <= n; i++) {
+			dp[i] = dp[i - 1] + 1;
+			if (i % 2 == 0) {
+				dp[i] = Math.min(dp[i], dp[i / 2] + 1);
 			}
-			 if (n % 2 == 0) {
-				n = n/2;
-				System.out.println("2n " + n);
-				count++;
+			if (i % 3 == 0) {
+				dp[i] = Math.min(dp[i], dp[i / 3] + 1);
 			}
 		}
-
-		System.out.println(count);
-
+		System.out.println(dp[n]);
 	}
 }
