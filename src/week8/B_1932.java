@@ -1,49 +1,38 @@
 package week8;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class B_1932 {
-	public static void main(String[] args) throws IOException {
-		Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) throws Exception {
+
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
-
-		int lines = sc.nextInt();
+		int lines = Integer.parseInt(br.readLine());
 
 		int[][] tree = new int[lines][lines];
-		System.out.println("lines: "+lines);
-		int sum = 0;
-		int fixX = 0, fixY = 0;
+		System.out.println("lines: " + lines);
 
 		for (int i = 0; i < lines; i++) {
 			st = new StringTokenizer(br.readLine());
-			for (int j = 0; i <= i; j++) {
+			for (int j = 0; j < i + 1; j++) {
 				tree[i][j] = Integer.parseInt(st.nextToken());
+				System.out.printf("%d ", tree[i][j]);
+			}
+			System.out.println();
+		}
+
+		for (int i = 1; i < lines; i++) {
+			for (int j = 0; j < i + 1; j++) {
+				tree[i][j] += Math.max((j == 0) ? 0 : tree[i - 1][j - 1], tree[i - 1][j]);
 			}
 		}
 
-		for (int i = 0; i < lines; i++) {
-				if (i == 0) {
-					sum = tree[0][0];
-					fixX = 0;
-					fixY = 0;
-				} else {
-					sum += Math.max(tree[fixX + 1][fixY], tree[fixX + 1][fixY + 1]);
-					System.out.println("sum1 : "+sum);
-					if (tree[fixX + 1][fixY] == Math.max(tree[fixX + 1][fixY], tree[fixX + 1][fixY + 1])) {
-						++fixX;
-					} else {
-						++fixX;
-						++fixY;
-					}
-				}
+		Arrays.sort(tree[lines - 1]);
 
-		}
-			System.out.println(sum);
+		System.out.println(tree[lines - 1][lines - 1]);
 
-		}
 	}
+}
