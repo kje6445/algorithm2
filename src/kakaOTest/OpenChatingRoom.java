@@ -2,7 +2,9 @@ package kakaOTest;
 
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class OpenChatingRoom {
 	public static void main(String[] args){
@@ -16,18 +18,34 @@ public class OpenChatingRoom {
 		}
 	}
 
-	public static String[] solution(String[] record){
-		String[] answer={};
+	public static <E> String[] solution(String[] record){
+		String[] answer={}; // 문자열로 다시 만들어서 합치기
 		String[] StoreMessages = {"Enter","Leave","Change"};
-		HashMap<String, String[]> messageCheck = new HashMap<>();
+		String[] outMessages = {"님이 들어왔습니다.","님이 나갔습니다."};
+		HashMap<String, List> messageCheck = new HashMap<>();
 
 		for(int i=0; i<record.length; i++){
-			String[] testMessages = record[i].split(" ");
-			messageCheck.put(testMessages[0], new String[]{testMessages[1], testMessages[2]});
+			String splitMessage = record[i];
+			String order = splitMessage.split("")[0];
+			String id = splitMessage.split("")[1];
+			String nickName = splitMessage.split("")[2];
+
+			List listA = new ArrayList();
+			listA.add(id);
+			listA.add(nickName);
+
+			messageCheck.put(order,listA);
+
 		}
 
-		if(StoreMessages[0].equals(messageCheck.get())){
-			System.out.println(messageCheck.get()+"님이 들어왔습니다.");
+		if(messageCheck.containsKey("Enter")){
+			answer= new String[]{messageCheck.get(1) + outMessages[0]}; // Prodo님이 들어왔습니다.
+		}
+		if(messageCheck.containsKey("Leave")){
+			answer= new String[]{messageCheck.get(1) + outMessages[1]}; // Prodo님이 나갔습니다.
+		}
+		if(messageCheck.containsKey("Change")){
+
 		}
 		//record 값을 마지막 배열까지 입력 받고 나서 알맞게 출력하도록한다.
 		return answer;
