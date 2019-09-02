@@ -1,12 +1,7 @@
 package kakaOTest;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 public class FailureRatio {
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	public static void main(String[] args){
 		//실패율 -> 스테이지에 도달했지만 클리어 못한 플레이어의 수/ 스테이지에 도달한 플레이어수
 		int N = 5; //스테이지 개수 1~500
 
@@ -56,7 +51,6 @@ public class FailureRatio {
 			}
 			System.out.println("max : " + max);
 			failureRatio[result] = -1;
-			System.out.println("failureRatio[result] " + failureRatio[result]);
 			System.out.println();
 			for(int k=0; k<answer.length;k++){
 				System.out.printf("%d ",answer[k]);
