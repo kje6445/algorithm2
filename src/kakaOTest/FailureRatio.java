@@ -3,7 +3,6 @@ package kakaOTest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class FailureRatio {
 	public static void main(String[] args) throws IOException {
@@ -15,14 +14,10 @@ public class FailureRatio {
 		//실패율이 같은 스테이지가 있다면 작은 번호부터 오도록. 스테이지에 도달한 유저 없는 경우
 		//실패율 0
 
-		/*for (int i = 0; i < stages.length; i++) {
-			stages[i] = Integer.parseInt(br.readLine());
-		}
-*/
 		int[] solution = solution(N, stages);
 
 		for (int i = 0; i < solution.length; i++) {
-			System.out.println(solution[i]);
+			System.out.printf("%d ", solution[i]);
 		}
 	}
 
@@ -30,32 +25,46 @@ public class FailureRatio {
 		int[] count = new int[N + 1];
 		for (int i = 0; i < stages.length; i++) {
 			int num = 0;
-			stages[i] = num;
-			if (num < N) {
-				++count[num];
-			} else {
+			num = stages[i];
+			if (num > N) {
 				++count[0];
+			} else {
+				++count[num];
 			}
 		}
 		double[] failureRatio = new double[N + 1];
 		int sum = stages.length;
 		int lesSum = 0;
 		for (int i = 1; i < count.length; i++) {
-			failureRatio[i] = (double) count[i] / (sum - lesSum);
+			failureRatio[i] = (double) count[i] / (double) (sum - lesSum);
 			lesSum += count[i];
 		}
-		int[] answer = new int[N];
-		double max = failureRatio[1];
-		int result = 0;
-		for (int i = 1; i < failureRatio.length; i++) {
-			if (max < failureRatio[i]) {
-				max = failureRatio[i];
-				result = i;
-			}
-			if (i == N + 1) {
-				failureRatio[result] = -1;
-			}
+		for (int i = 0; i < count.length; i++) {
+			System.out.printf("%f ", failureRatio[i]);
 		}
+		int[] answer = new int[N];
+		int result = 0;
+
+		for(int check=0; check<N; check++) {
+			double max = -1;
+			for (int i = 1; i < failureRatio.length; i++) {
+
+				if (max < failureRatio[i]) {
+					max = failureRatio[i];
+					result = i;
+				}
+			}
+			System.out.println("max : " + max);
+			failureRatio[result] = -1;
+			System.out.println("failureRatio[result] " + failureRatio[result]);
+			System.out.println();
+			for(int k=0; k<answer.length;k++){
+				System.out.printf("%d ",answer[k]);
+			}
+			answer[check] = result;
+		}
+
+		System.out.println("result : " + result);
 		return answer;
 	}
 }
