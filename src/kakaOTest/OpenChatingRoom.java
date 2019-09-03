@@ -19,34 +19,59 @@ public class OpenChatingRoom {
 	}
 
 	public static <E> String[] solution(String[] record){
-		String[] answer={}; // 문자열로 다시 만들어서 합치기
+		String[] answer=new String[5]; // 문자열로 다시 만들어서 합치기
 		String[] StoreMessages = {"Enter","Leave","Change"};
 		String[] outMessages = {"님이 들어왔습니다.","님이 나갔습니다."};
 		HashMap<String, List> messageCheck = new HashMap<>();
 
 		for(int i=0; i<record.length; i++){
-			String splitMessage = record[i];
-			String order = splitMessage.split("")[0];
-			String id = splitMessage.split("")[1];
-			String nickName = splitMessage.split("")[2];
-
+			String[] splitMessage = record[i].split(" ");
+			System.out.println("record[i] : "+record[i]);
+			String order = splitMessage[0];
+			System.out.println("order: "+order);
+			String id = splitMessage[1];
+			System.out.println("id: "+ id);
+			String nickName;
+			if(splitMessage.length==3) {
+				nickName = splitMessage[2];
+				System.out.println("nickName: " + nickName);
+			}else{
+				nickName = null;
+			}
 			List listA = new ArrayList();
 			listA.add(id);
 			listA.add(nickName);
 
+
+			//	System.out.println("listA.get(0): "+listA.get(0));
+			//	System.out.println("listA.get(1): "+listA.get(1));
+
+
 			messageCheck.put(order,listA);
-
+		//	if(listA.get(1)!=null)//messageCheck의 listA의 get(1)로 닉네임 값을 호출해보기
+		//		System.out.println("messageCheck의 닉네임: " +messageCheck.get("Enter").get(1));
 		}
+		for(int i=0; i<messageCheck.size(); i++){
+			if(messageCheck.containsKey("Change")){
+				String keepId = (String) messageCheck.get("Change").get(0);
+				String changeName = (String) messageCheck.get("Change").get(1);
+				System.out.println("changeId "+keepId+ " changeName "+ changeName);
 
-		if(messageCheck.containsKey("Enter")){
-			answer= new String[]{messageCheck.get(1) + outMessages[0]}; // Prodo님이 들어왔습니다.
+				for(int k=0; k<messageCheck.size(); k++){
+					if(messageCheck.get("Enter").get(0).equals(keepId) || messageCheck.get("Leave").get(0).equals(keepId)){
+						//messageCheck.get("Enter").get(0).equals(keepId) 의 닉네임을 ChangeName으로 교체해 줄 것.
+					}
+				}
+			}
+		}
+		if(messageCheck.containsKey("Enter")){// Prodo님이 들어왔습니다.
+			answer= new String[]{messageCheck.get("Enter").get(1) + outMessages[0]};
+			System.out.print("출력하기 : "+answer[0]);
 		}
 		if(messageCheck.containsKey("Leave")){
-			answer= new String[]{messageCheck.get(1) + outMessages[1]}; // Prodo님이 나갔습니다.
+			answer= new String[]{messageCheck.get("Enter").get(1) + outMessages[1]}; // Prodo님이 나갔습니다.
 		}
-		if(messageCheck.containsKey("Change")){
 
-		}
 		//record 값을 마지막 배열까지 입력 받고 나서 알맞게 출력하도록한다.
 		return answer;
 	}
