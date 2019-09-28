@@ -1,40 +1,59 @@
 package KaKaO2020;
 
-import java.util.Stack;
 
-public class BalancedString { //스택으로 풀려고 했으나 문자열로 풀어야 될 것 같음
+public class BalancedString {
 	public static void main(String[] args) {
 		String p = "(()())()";
 
-		for(int i=0; i<p.length(); i++) {
+
 			System.out.print(solution(p));
-		}
+
 	}
 	public static String solution(String p) {
-		String answer = "";
-		Stack<Character> alrightStack = new Stack<Character>();
-		Stack<Character> balancedStack = new Stack<Character>();
-		boolean succ = true;
-		int right =0; int left =0;
-		for(int i=0; i<p.length(); i++){
-			char c = p.charAt(i);
+		String[] arr = p.split("");
 
-			if(c == '('){
-			//	alrightStack.push(')');
-				right++;
+
+		int rightCount =0; int leftCount = 0;
+		boolean balancedString = false;
+		boolean rightString = false;
+		String u= ""; String v = "";
+		String answer;
+		int idx=0;
+		for(int i=0; i<arr.length; i++){
+			if(arr[i].equals('(')){
+				++rightCount;
 			}else{
-				/*if(alrightStack.isEmpty()){
-					succ = false;
-					break;
-				}
-				alrightStack.pop();*/
-				left++;
+				++leftCount;
+			}
+			if(rightCount == leftCount){
+				balancedString = true;
+			}
+			if(balancedString==true){
+				System.out.println("idx "+i);
 			}
 		}
 
-		if(right==left){
-			System.out.println("올바른 문자열입니다.");
+
+		for(int i=0; i<arr.length; i++){
+			if((i==0)) {
+				System.out.println("i "+i);
+				u = u.concat(arr[i]);
+			}else if(i==arr.length-1){
+				u = u.concat(arr[i]);
+			}
+			else{
+				v= v.concat(arr[i]);
+			}
 		}
-		return answer;
+		System.out.println("u: "+u);
+		System.out.println("v: "+v);
+
+		String[] arr2 = v.split("");
+		if(arr2[0].equals(')')){
+
+		}
+
+		answer = p;
+		return  answer;
 	}
 }

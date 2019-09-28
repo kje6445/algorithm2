@@ -1,9 +1,7 @@
 package kakaOTest;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 
 public class OpenChatingRoom_v2 {
 	public static void main(String[] args) {
