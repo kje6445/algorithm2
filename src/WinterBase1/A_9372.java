@@ -14,5 +14,7 @@ public class A_9372 {
 		int plane = Integer.parseInt(st.nextToken());
 
 
+
+
 	}
 }
