@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 //계산을 후위 표기식으로 바꾸어 계산하는 프로그래밍
 
 public class SW_Solution_1224 {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args)  throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		for(int i=1; i<=10; i++) {
