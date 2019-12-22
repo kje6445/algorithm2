@@ -11,29 +11,25 @@ public class Solution_1289 {
 		int T = sc.nextInt();
 
 		for(int i=0; i<T; i++){
-			int count = 0;
-			int check = 0;
 
-			String defaultCheck = "0";
+			char[] memoryArr = sc.nextLine().toCharArray();
 
-			String memory = sc.nextLine();
-			String[] arr = memory.split(" ");
-
-			for(int k=0; k< memory.length(); k++ ){
-				if(k==0){
-					if(defaultCheck==arr[k]){ // 첫 시작이 0
-						++check;
-					}else{
-						count = memory.length()-1;
+			int answer = 0;
+			for(int k=0; k<memoryArr.length; k++){
+				if(memoryArr[0] =='0'){
+					if(memoryArr[k] == '1') {
+						answer = memoryArr.length - k;
+						break;
+					}
+				}else{
+					if(memoryArr[k] == '0') {
+						answer = k-1;
 						break;
 					}
 				}
-
-				if(defaultCheck == arr[k]){
-
-				}
 			}
-			System.out.println("#"+(i+1)+" "+count);
+			System.out.println("#"+(i+1)+" "+answer);
 		}
+
 	}
 }
