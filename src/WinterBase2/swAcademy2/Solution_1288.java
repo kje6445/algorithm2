@@ -11,7 +11,7 @@ public class Solution_1288 {
 
 		for(int i=1; i<=testCase; i++){
 			int num = sc.nextInt();
-			
+
 			System.out.printf("#"+i);
 		}
 	}
