@@ -17,9 +17,9 @@ public class Solution_2007 {
 			arr = br.readLine();
 			int wavelength = 0;
 
-			for(int t=1; t<=arr.length(); t++){
+			for(int t=2; t<10; t++){
 				String sub = arr.substring(0,t);
-				String subNext = sub.substring(t,t+1);
+				String subNext = arr.substring(t,t*2);
 				if( sub.equals(subNext)){
 					wavelength = t;
 					break;
