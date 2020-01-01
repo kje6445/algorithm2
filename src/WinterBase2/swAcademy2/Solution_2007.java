@@ -3,23 +3,30 @@ package WinterBase2.swAcademy2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
+//패턴 마디의 길이
 public class Solution_2007 {
 	public static void main(String[] args) throws IOException {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		int testCase = Integer.parseInt(br.readLine());
-		StringTokenizer st;
 		String arr;
-		char[] arr2 = new char[30];
 
-		for(int i=0; i<testCase; i++){
+		for(int i=1; i<=testCase; i++){
 			arr = br.readLine();
-			arr2 = arr.toCharArray();
+			int wavelength = 0;
 
-			System.out.printf("#"+(i+1));
+			for(int t=1; t<=arr.length(); t++){
+				String sub = arr.substring(0,t);
+				String subNext = sub.substring(t,t+1);
+				if( sub.equals(subNext)){
+					wavelength = t;
+					break;
+				}
+			}
+
+			System.out.println("#"+i+" "+ wavelength);
 		}
 	}
 }
