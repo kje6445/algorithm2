@@ -21,14 +21,32 @@ public class Solution_1979 {
 			N = Integer.parseInt(st.nextToken());
 			K = Integer.parseInt(st.nextToken());
 
-			int[][] matrix= new int[N][N];
-			for(int p=0; p<N; p++){
-				st = new StringTokenizer(br.readLine());
-				for(int tt=0; tt<N; tt++){
-					matrix[p][tt] = Integer.parseInt(st.nextToken());
-				}
+			int count = 0;
+
+			String sub;
+			String subNext="1";
+
+			for(int j=0; j<K-1; j++){
+				subNext = subNext.concat(" 1");
 			}
-			System.out.println("#"+i);
+			System.out.println("subNext "+subNext);
+
+			for(int p=0; p<N; p++){
+				String arr = br.readLine();
+
+				System.out.println("arr "+arr);
+
+				for(int v=0; v<=N-K; v++){
+					sub = arr.substring(v,v+K+2);
+					System.out.println("sub "+ sub);
+					if(sub.equals(subNext)){
+						++count;
+						break;
+					}
+				}
+
+			}
+			System.out.println("#"+i+" "+count);
 		}
 	}
 }
