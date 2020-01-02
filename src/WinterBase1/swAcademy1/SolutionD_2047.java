@@ -10,27 +10,14 @@ public class SolutionD_2047 {
 		BufferedReader br = new BufferedReader(new InputStreamReader((System.in)));
 
 		String line = br.readLine();
-		String[] checkLine = line.split("_");
+		String[] checkLine = line.split(" ");
 
 		int nums = checkLine.length;
-		char tmp;
-
-		String input = "";
-		String output = "";
 
 		for(int i=0; i<nums; i++){
-			String arrString = checkLine[i];
-			int arrlength = arrString.length();
-			tmp = arrString.charAt(arrlength);
-
-			for(int j=0; j<arrlength; j++) {
-				if (61 <= tmp) {
-					output += input.valueOf(tmp).toUpperCase();
-				}
-			}
-			output+="_";
+			checkLine[i] = checkLine[i].toUpperCase();
+			System.out.printf(checkLine[i]);
 		}
 
-		System.out.println(output);
 	}
 }
