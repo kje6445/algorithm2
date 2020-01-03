@@ -1,33 +1,48 @@
 package WinterBase3.swAcademy3;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
 //숫자 배열 회전
 public class Solution_1961 {
-	public static void main(String[] args) throws IOException {
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	static int[][] rotate(int a[][]){
+		int i,j,n = a.length;
+		int z[][] = new int[n][n];
+		for(i=0; i<n; i++){
+			for(j=0; j<n; j++){
+				z[i][j] = a[n-1-j][i];
+			}
+		}
+		return z;
+	}
+	public static void main(String[] args){
 
-		int testCase = Integer.parseInt(br.readLine());
-		StringTokenizer st;
-		for(int i=1; i<=testCase; i++){
-			int num = Integer.parseInt(br.readLine());
-
-			String[][] arr = new String[num][num];
-
-			for(int m=0; m<num; m++){
-				st = new StringTokenizer(br.readLine());
-				for(int n=0; i<num; n++){
-					arr[m][n] = st.nextToken();
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		for(int t=1; t<=T; t++) {
+			int num = sc.nextInt();
+			int a[][] = new int[num][num];
+			int i, j;
+			for(i=0; i<num; i++) {
+				for(j=0; j<num; j++) {
+					a[i][j] = sc.nextInt();
 				}
 			}
+			int b[][] = rotate(a);
+			int c[][] = rotate(b);
+			int d[][] = rotate(c);
 
-			//90도, 180도, 270도 나눠서 돌리는 것을 구현해야함.
-			// 입력받은 것을 concat() 함수를 이용하여 문제 풀이
-			System.out.println("#"+i);
+			System.out.println("#"+t);
+
+			for(i=0; i<num; i++) {
+				for(j=0; j<num; j++) System.out.print(b[i][j]);
+				System.out.print(" ");
+				for(j=0; j<num; j++) System.out.print(c[i][j]);
+				System.out.print(" ");
+				for(j=0; j<num; j++) System.out.print(d[i][j]);
+				System.out.println();
+			}
+
 		}
 	}
 }
