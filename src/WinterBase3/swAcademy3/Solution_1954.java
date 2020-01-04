@@ -15,24 +15,27 @@ public class Solution_1954 {
 			int n = Integer.parseInt(br.readLine());
 
 			int[][] arr = new int[n][n];
+			int first = n;
 			int num = 0;
-			for(int p=n;p>=3;--p) {
+			for(int p=n;p>0;--p) {
+                n=p;
 				for (int k = 0; k < n; k++)
 					arr[0][k] = ++num;
 
 				for (int k = 1; k < n; k++)
 					arr[k][n - 1] = ++num;
 
-				for (int k = n - 2; k >= 0; --k)
+				for (int k = n - 2; k >=0; --k)
 					arr[n - 1][k] = ++num;
 
 				for (int k = n - 2; k > 0; --k)
 					arr[k][0] = ++num;
-				--p;
-				n=p;
+
+				p--;
 			}
 
 			System.out.println("#"+i);
+			n=first;
 			for(int p=0; p<n; p++){
 				for(int k=0; k<n; k++){
 					System.out.printf(arr[p][k]+" ");;
