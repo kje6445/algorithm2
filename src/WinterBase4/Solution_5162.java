@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+//두가지 빵의 딜레마
 public class Solution_5162 {
 	public static void main(String[] args) throws IOException {
 
@@ -13,7 +14,7 @@ public class Solution_5162 {
 
 		for (int i = 1; i <= testCase; i++) {
 			String[] arr = br.readLine().split(" ");
-			int A=0, B = 0, C=0;
+			int A = 0, B = 0, C = 0;
 
 			for (int p = 0; p < 3; p++) {
 				if (p == 0) {
@@ -25,9 +26,9 @@ public class Solution_5162 {
 				}
 			}
 
-			int check =C/Math.min(A,B);
+			int check = C / Math.min(A, B);
 
-			System.out.println("#" + i + " "+check);
+			System.out.println("#" + i + " " + check);
 		}
 	}
 }
