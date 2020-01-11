@@ -11,38 +11,20 @@ public class Solution_2056 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		int testCase = Integer.parseInt(br.readLine());
+		int lim[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 		for (int i = 1; i <= testCase; i++) {
-			String nums = br.readLine();
-			String year = nums.substring(0, 4);
-			String month = nums.substring(4, 6);
-			String date = nums.substring(6, 8);
+			int ymd = Integer.parseInt(br.readLine());
 
-			String answer = year;
-			answer = answer.concat("/");
-			answer = answer.concat(month);
-			answer = answer.concat("/");
-			answer = answer.concat(date);
+			int year = ymd / 10000;
+			int month = (ymd - year * 10000) / 100;
+			int day = ymd % 100;
 
-
-			if (month.equals("02")) {
-				if ((Integer.parseInt(date) > 28) && (Integer.parseInt(date) < 1)) {
-					answer = "-1";
-				}
-			} else if ((month.equals("01")) || (month.equals("03")) || (month.equals("05")) || (month.equals("07")) || (month.equals("08")) || (month.equals("10")) || (month.equals("12"))) {
-				if ((Integer.parseInt(date) > 31) && (Integer.parseInt(date) < 1)) {
-					answer = "-1";
-				}
-			} else if ((month.equals("04")) || (month.equals("06")) || (month.equals("09")) || (month.equals("11"))) {
-				if ((Integer.parseInt(date) > 30) && (Integer.parseInt(date) < 1)) {
-					answer = "-1";
-				}
+			if ((month < 1 || month > 12) || (day < 1 || day > lim[month - 1])) {
+				System.out.println("#" + i + " -1");
 			} else {
-				answer = "-1";
+				System.out.printf("#%d %04d/%02d/%02d \n", i, year, month, day);
 			}
-
-
-			System.out.println("#" + i + " " + answer);
 		}
 	}
 }
