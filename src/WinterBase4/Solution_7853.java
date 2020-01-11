@@ -1,8 +1,8 @@
 package WinterBase4;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+		import java.io.BufferedReader;
+		import java.io.IOException;
+		import java.io.InputStreamReader;
 
 //오타
 public class Solution_7853 {
@@ -21,7 +21,7 @@ public class Solution_7853 {
 				checkNum[p] = 0;
 			}
 			int sum = 1;
-	//		for (int p = 0; p < checkNum.length; p++) {
+			//		for (int p = 0; p < checkNum.length; p++) {
 //				System.out.printf( splitWord[p]+" ");
 //			}
 
