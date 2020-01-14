@@ -24,19 +24,13 @@ public class Solution_1984 {
 			Arrays.sort(arr);
 
 			int sum = 0;
-			int first = arr[0];
-			int find = arr[0];
-			int count = 0;
 
 			for (int p = 1; p < 9; p++) {
-				if ((first != arr[p]) || (find != arr[p])) {
 					sum += arr[p];
-					++count;
-				}
 			}
-			double avg =sum / count;
-			System.out.println("avg "+avg);
-			System.out.println("#" + i + " " + Math.round(avg));
+			float avg = (float)sum / 8;
+			int answer = Math.round(avg);
+			System.out.println("#" + i + " " + answer);
 		}
 	}
 }
