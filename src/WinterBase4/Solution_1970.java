@@ -12,11 +12,10 @@ public class Solution_1970 {
 
 		int testCases = Integer.parseInt(br.readLine());
 		int[] moneyAccount = {50000, 10000, 5000, 1000, 500, 100, 50, 10};
-		int[] dp = new int[8];
 
 		for (int i = 1; i <= testCases; i++) {
 			int money = Integer.parseInt(br.readLine());
-
+			int[] dp = new int[8];
 			for (int p = 0; p < 8; p++) {
 				if (moneyAccount[p] > money) {
 					dp[p] = 0;
