@@ -22,31 +22,21 @@ public class Solution_5515 {
 			for (int p = 1; p < dates.length; p++) {
 				if (p == 2) {
 					dates[p] = 29;
-				} else if ((p % 2 == 1) || (p == 8)) {
-					dates[p] = 31;
-				} else {
+				} else if ((p == 4) || (p == 6) || (p == 9) || (p == 11)) {
 					dates[p] = 30;
+				} else {
+					dates[p] = 31;
 				}
 			}
 
 			int sum = 0;
-			int mod = 0;
-
-			if (month == 1) {
-				sum = date;
-				mod = sum % 7 + 3;
-				if(mod>7){
-					mod = mod%7;
-				}
-			} else {
-				for (int p = 1; p < month; p++) {
-					sum += dates[p];
-				//	System.out.println("Forsum " + sum);
-				}
-				sum += date;
-				mod = (sum-5)% 7;
-			//	System.out.println("sum " + sum);
+			int mod;
+			for (int p = 1; p < month; p++) {
+				sum += dates[p];
 			}
+			sum += date;
+
+			mod = (sum + 3) % 7;
 			System.out.println("#" + i + " " + mod);
 		}
 	}
