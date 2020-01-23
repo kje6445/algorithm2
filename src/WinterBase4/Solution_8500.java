@@ -3,8 +3,9 @@ package WinterBase4;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
-
+//극장 좌석
 public class Solution_8500 {
 	public static void main(String[] args) throws IOException {
 
@@ -21,7 +22,12 @@ public class Solution_8500 {
 				arr[p] = Integer.parseInt(st.nextToken());
 			}
 
+			Arrays.sort(arr);
 			int seat = 0;
+			for(int p=0;p<n; p++){
+				seat += arr[p];
+			}
+			seat += arr[n-1]+n;
 
 			System.out.println("#" + i + " "+seat);
 		}
