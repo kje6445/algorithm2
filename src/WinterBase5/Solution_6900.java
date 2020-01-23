@@ -3,6 +3,8 @@ package WinterBase5;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 //주혁이의 복권 당첨
@@ -16,13 +18,20 @@ public class Solution_6900 {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			int n = Integer.parseInt(st.nextToken());
 			int m = Integer.parseInt(st.nextToken());
-			// n개 만큼의 8크기의 배열 개수와 맞췄을 때 갖는 수를 get
-			for(int p=0; p<n; p++){
 
+			int[] nScore = new int[n];
+
+			// n개 만큼의 8크기의 배열 개수와 맞췄을 때 갖는 수를 get
+			ArrayList<HashMap<Integer, String>> first = new ArrayList<>();
+
+			for (int p = 0; p < n; p++) {
+				st = new StringTokenizer(br.readLine());
+			//	HashMap<p,st.nextToken()>;
+				nScore[p] = Integer.parseInt(st.nextToken());
 			}
 
 			//m개의 주혁이가 얻을 수 있는 수를 받는다.
-		System.out.printf("#"+i+" ");
+			System.out.printf("#" + i + " ");
 		}
 	}
 }
