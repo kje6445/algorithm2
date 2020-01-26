@@ -28,18 +28,22 @@ public class Solution_1204 {
 				int check = arr[p];
 				++idxArr[check];
 			}
-			for (int p = 0; p < 1000; p++) {
-				System.out.printf(arr[p] + " ");
-			}
-			System.out.println();
 
-			int modNum = 0;
+			/*int modNum = 0;
 			for (int p = 0; p <= 100; p++) {
-				if (idxArr[modNum] > idxArr[p]) {
+				if (idxArr[modNum] < idxArr[p]) {
 					modNum = p;
 				}
+			}*/
+			int maxIdx = 0;
+			int maxVal = 0;
+			for (int p = 100; p >= 0; p--) {
+				if (idxArr[p] > maxVal) {
+					maxIdx = p;
+					maxVal = idxArr[p];
+				}
 			}
-			System.out.println("#" + caseNum + " " + modNum);
+			System.out.println("#" + caseNum + " " + maxIdx);
 		}
 	}
 }
