@@ -3,7 +3,6 @@ package WinterBase5;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 //파핑파핑 지뢰찾기
 public class Solution_1868 {

@@ -19,7 +19,11 @@ public class Solution_6853 {
 			int bY = Integer.parseInt(xys[3]);
 
 			int num = Integer.parseInt(br.readLine());
-
+			int[][] coordinate = new int[2][num];
+			//문제에 이해가 안되네;; 2번째 부터 진짜 흠,,,,
+			// 뭘까 외부의 점의 기준이 뭘까
+			for(int p=0; p<num; p++){
+			}
 			System.out.printf("#"+i+" ");
 
 		}
