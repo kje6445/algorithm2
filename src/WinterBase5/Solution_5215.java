@@ -1,39 +1,45 @@
 package WinterBase5;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
+
 //햄버거 다이어트
 public class Solution_5215 {
-	public static void main(String[] args) throws IOException {
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	public static int[][] ham;
+	public static int N;
+	public static int L;
+	public static int result;
 
-		int testCase = Integer.parseInt(br.readLine());
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scan = new Scanner(System.in);
+		int testCase = scan.nextInt();
 		for (int i = 1; i <= testCase; i++) {
-			String[] arr = br.readLine().split(" ");
-			int foods = Integer.parseInt(arr[0]);
-			int limitCalorie = Integer.parseInt(arr[1]);
+			N = scan.nextInt();
+			L = scan.nextInt();
+			ham = new int[N][2];
+			for (int j = 0; j < N; j++) {
+				ham[j][0] = scan.nextInt();
+				ham[j][1] = scan.nextInt();
+			}//for j
+			result = 0;
+			hamburg(0, 0, 0);
+			System.out.println("#" + i + " " + result);
+		}//for i
+	}//main
 
-			int[][] foodArr = new int[foods][2];
-			int[][] maxFind = new int[1][2];
-
-			//제한 칼로리 이하의 조합중에서 가장 맛에 대한 점수가 높은 햄버거의 점수를 출력
-			for(int p=0; p<foods; p++){
-				String[] arr2 = br.readLine().split(" ");
-				//N개의 줄에는 재료에 대한 민기의 맛에 대한 점수
-				foodArr[p][0] = Integer.parseInt(arr2[0]);
-				//칼로리
-				foodArr[p][1] = Integer.parseInt(arr2[1]);
+	public static void hamburg(int sum, int cnt, int star) {
+		if (sum > L) {
+			return;
+		} else if (cnt == N) {
+			if (result < star) {
+				result = star;
 			}
-
-			for(int p=0; p<foods; p++){
-				if(maxFind[0][1]<limitCalorie){
-
-				}
-			}
-
-			System.out.printf("#"+i+" ");
+			return;
+		} else {
+			hamburg(sum + ham[cnt][1], cnt + 1, star + ham[cnt][0]);
+			hamburg(sum, cnt + 1, star);
 		}
 	}
-}
+}//class
+
