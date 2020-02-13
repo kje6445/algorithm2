@@ -31,7 +31,7 @@ public class Solution_4301 {
 			for (int p = 0; p < M; p++) {
 				for (int k = 0; k < N; k++) {
 					if (field[p][k] == 0) {
-						field[p + 2][k] =1;
+						field[p + 2][k] = 1;
 						field[p][k + 2] = 1;
 					}
 				}
