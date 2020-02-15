@@ -11,15 +11,14 @@ public class Solution_8016 {
 
 		int testCase = Integer.parseInt(br.readLine());
 		for (int i = 1; i <= testCase; i++) {
-			int line = Integer.parseInt(br.readLine());
+			long n = Long.parseLong(br.readLine());
 
-			int countLine = line*2+1;
-			int totalCount = (line-1)*(line-1);
-			int beforeLine = totalCount+2;
-			int last = (beforeLine)+(countLine-1)*2;
+			long frist = 2*n*n-4*n+3;
+			long countN = 2*n-1;
+			long last = 2*(countN-1)+frist;
 
-			System.out.println("totalCount "+totalCount);
-			System.out.println("#"+i+" "+beforeLine+" "+last);
+			System.out.println("countN "+countN);
+			System.out.println("#"+i+" "+frist+" "+last);
 		}
 	}
 }
