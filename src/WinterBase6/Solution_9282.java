@@ -20,6 +20,14 @@ public class Solution_9282 {
 			int m = Integer.parseInt(st.nextToken());
 
 			int[][] arr = new int[n][m];
+
+			for(int p=0; p<n; p++){
+				st = new StringTokenizer(br.readLine());
+				for(int k=0; k<m; k++){
+					arr[p][k] = Integer.parseInt(st.nextToken());
+				}
+			}
+
 			System.out.println("#"+i);
 		}
 	}
