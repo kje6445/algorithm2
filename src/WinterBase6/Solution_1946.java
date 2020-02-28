@@ -16,32 +16,52 @@ public class Solution_1946 {
 
 			String[][] arr = new String[num][10];
 			int checkPost = 0;
-			int checkPast = 0;
-
+			int numInx=0;
 			for (int k = 0; k < num; k++) {
 				StringTokenizer st = new StringTokenizer(br.readLine());
 				String first = st.nextToken();
-				int count = Integer.parseInt(st.nextToken());
+				int count =  Integer.parseInt(st.nextToken());
 
-				if (checkPost < 10) {
-					checkPast = 10 - checkPost;
-					if (checkPast >= count) {
-						for (int p = checkPast; p < checkPast+count; p++) {
-							arr[k][p] = first;
+				//count가 10일때
+				if(k==0){
+					for(int p=0; p<count; p++){
+						arr[numInx][p] = first;
+				//		System.out.println("0 arr[numInx][p] "+arr[numInx][p]);
+					}
+					if(count==10) {
+						++numInx;
+					}else {
+						checkPost = count;
+					}
+				}else{
+					int plus = checkPost+count;
+					if(plus<10) {
+						for (int p = checkPost; p < plus; p++) {
+							arr[numInx][p] = first;
 						}
 					}else{
-
+						for (int p = checkPost; p < 10; p++) {
+							arr[numInx][p] = first;
+					//		System.out.println("1 arr[numInx][p] "+arr[numInx][p]);
+						}
+						plus = plus-10;
+			//			System.out.println("plus "+plus);
+						++numInx;
+						for (int p = 0; p < plus; p++) {
+							arr[numInx][p] = first;
+			//				System.out.println("2 arr[numInx][p] "+arr[numInx][p]);
+						}
 					}
+					checkPost = plus;
 				}
 
-				if (count < 10) {
-					checkPost = count;
-				}
 			}
 
 			System.out.println("#"+i);
 			for(int j=0; j<num; j++){
 				for(int y=0; y<10; y++){
+					if(arr[j][y] == null)
+						break;
 					System.out.printf(arr[j][y]);
 				}
 				System.out.println("");
