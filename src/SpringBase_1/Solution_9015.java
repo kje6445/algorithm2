@@ -19,21 +19,43 @@ public class Solution_9015 {
 			for(int k=0; k<n; k++){
 				arr[k] = Integer.parseInt(numArr[k]);
 			}
+
+			for(int k=0; k<n; k++){
+				System.out.printf(" "+arr[k]); // 제대로 입력 받아짐
+			}
+			System.out.println("");
 		//	int preNum;
-			Arrays.sort(arr);
 			int count = 0;
 			int check =0;
-			for(int k=0; k<n; k++) {
+			for(int k=0; k<n-1; k++) {
 				int preNum = arr[k];
-				//다음 수랑 값이 같을 경우
-				if(preNum == arr[k+1]){
-				//	++count;
-				}else if(preNum < arr[k+1]){//다음 수가 증가
+				int p = k+1;
+				int postNum = arr[p];
+
+			//	System.out.println("k "+k+" preNum "+preNum +" postNum "+ postNum);
+
+				if(preNum == postNum){ //다음 수랑 값이 같을 경우
+
+				}else if(preNum < postNum){//다음 수가 증가
+					if(check != 1){
+						count++;
+					}
+					System.out.println("k "+k+" check "+check);
 					check = 1;
+					System.out.println("After k1 "+k+" check "+check);
 				}else{//다음 수가 감소
-					check = 2;
+					if(check != 3){
+						count++;
+					}
+					System.out.println("k "+k+" check "+check);
+					check = 3;
+					System.out.println("After k2 "+k+" check "+check);
 				}
+				System.out.println("k "+k+" count "+count);
 			}
+
+			if(count ==0)
+				count++;
 
 			System.out.printf("#"+i+" "+count);
 		}
