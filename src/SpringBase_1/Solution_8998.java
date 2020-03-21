@@ -10,14 +10,15 @@ public class Solution_8998 {
 		//배열이 같거나 증가하는 오름차순이 같거나 감소하는 내림차순으로 정렬
 		int testCase = Integer.parseInt(br.readLine());
 		for (int i = 1; i <= testCase; i++) {
-			int n = Integer.parseInt(br.readLine());
+			int homeworks = Integer.parseInt(br.readLine());
 
 			int max = 0;
-
-			for(int p=0; p<n; p++){
+			// 2개 이상의 과제 동시에 하지 않는다.
+			//max날 이후 부터 과제를 하고 싶음.
+			for(int p=0; p<homeworks; p++){
 				String[] words = br.readLine().split(" ");
-				int T = Integer.parseInt(words[0]);
-				int D = Integer.parseInt(words[1]);
+				int days = Integer.parseInt(words[0]);
+				int deadLine = Integer.parseInt(words[1]);
 			}
 
 			System.out.println("#"+i+" "+max);
