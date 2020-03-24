@@ -8,8 +8,8 @@ import static java.lang.Integer.*;
 public class Streat11_1 {
 	public static void main(String[] args) throws IOException {
 
-		String S = "wreawerewa";
-		String pattern ="ware";
+		String S = "aaaaaa"; //wreawerewa
+		String pattern ="a"; //ware
 
 		System.out.print((solution(S,pattern)));
 
@@ -19,40 +19,48 @@ public class Streat11_1 {
 		int answer = 0;
 
 		String[] Sarr = S.split("");
-		String[] patterns = pattern.split("");
-		for(int i=0; i<patterns.length; i++){
-			System.out.println(patterns[i]);
-		}
-		int[] check = new int[patterns.length];
+		int[] alphabet = new int[26];
+		int plength = pattern.length();
 
-		for(int i=0; i<patterns.length; i++){
-				int idx = pattern.charAt(i);
-		//		System.out.println(idx);
-				check[i] = idx;
+		for(int i=0; i<26; i++){
+			alphabet[i] = 0;
 		}
 
-		for(int i=0; i<Sarr.length-patterns.length+1; i++){
-			String checkArr[] = new String[patterns.length];
-			int checkIdx[] = new int[patterns.length];
-			int count = 0;
+		for(int i=0; i<plength; i++){
+			int idx = pattern.charAt(i);
+			++alphabet[idx-97];
+		}
 
-			for(int j=0; j<patterns.length; j++){
-				checkArr[j] = Sarr[j+i];
-				checkIdx[j] = checkArr[j].charAt(0);
-				System.out.println(checkIdx[j]);
+		int[] check = new int[26];
+
+		for(int i=0; i<S.length()-plength+1; i++){
+			String[] sample = new String[plength];
+			for(int j=0; j<plength; j++){
+				sample[j] = Sarr[i+j];
 			}
-			Arrays.sort(checkIdx);
-			for(int j=0; j<patterns.length; j++){
-				int num = check[j];
 
-				for(int k=0; k<patterns.length; k++){
-					if(num == checkIdx[k]){
-						++count;
-					}
+			for(int j=0; j<26; j++){
+				check[j] = 0;
+			}
+
+			for(int k =0; k<plength; k++){
+				int idx =sample[k].charAt(0);
+				System.out.println("idx "+idx);
+				++check[idx-97];
+			}
+
+
+			int finalCheck = 0;
+
+			for(int p=0; p<26; p++){
+				if((check[p] == alphabet[p])&&(check[p]!=0)){
+					System.out.println("p "+p);
+					++finalCheck;
 				}
 			}
-
-			if(count == patterns.length){
+			System.out.println("finalCheck "+finalCheck);
+			System.out.println("------------");
+			if(finalCheck == plength){
 				++answer;
 			}
 		}
