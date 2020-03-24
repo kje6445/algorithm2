@@ -3,8 +3,8 @@ package SpringBase_1;
 public class Streat11_1 {
 	public static void main(String[] args){
 
-		String S = "aaaaaa"; //wreawerewa
-		String pattern ="a"; //ware
+		String S = "wreawerewa"; //wreawerewa
+		String pattern ="ware"; //ware
 
 		System.out.print((solution(S,pattern)));
 
@@ -14,27 +14,23 @@ public class Streat11_1 {
 		int answer = 0;
 
 		String[] Sarr = S.split("");
-		String[] patterns = pattern.split("");
 		int[] alphabet = new int[26];
 		int plength = pattern.length();
 
-		Zero(alphabet, patterns, plength);
+		Zero(alphabet, pattern, plength);
 
 		int[] check = new int[26];
 
 		for(int i=0; i<S.length()-plength+1; i++){
-			String[] sample = new String[plength];
-			for(int j=0; j<plength; j++){
-				sample[j] = Sarr[i+j];
-			}
+			String sample2 = S.substring(i,i+plength);
 
-			Zero(check,sample,plength);
+			Zero(check,sample2,plength);
 
 			int finalCheck = 0;
 
 			for(int p=0; p<26; p++){
 				if((check[p] == alphabet[p])&&(check[p]!=0)){
-					System.out.println("p "+p);
+				//	System.out.println("p "+p);
 					++finalCheck;
 				}
 			}
@@ -47,14 +43,14 @@ public class Streat11_1 {
 		return answer;
 	}
 
-	public static int[] Zero(int[] check, String[] fixArr, int plength){
+	public static int[] Zero(int[] check, String fixArr, int plength){
 
 		for(int i=0; i<check.length; i++){
 			check[i] =0;
 		}
 
 		for(int k =0; k<plength; k++){
-			int idx =fixArr[k].charAt(0);
+			int idx =fixArr.charAt(k);
 			++check[idx-97];
 		}
 
