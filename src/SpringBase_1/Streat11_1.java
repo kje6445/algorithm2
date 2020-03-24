@@ -1,12 +1,7 @@
 package SpringBase_1;
 
-import java.io.IOException;
-import java.util.*;
-
-import static java.lang.Integer.*;
-
 public class Streat11_1 {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args){
 
 		String S = "aaaaaa"; //wreawerewa
 		String pattern ="a"; //ware
@@ -19,19 +14,11 @@ public class Streat11_1 {
 		int answer = 0;
 
 		String[] Sarr = S.split("");
+		String[] patterns = pattern.split("");
 		int[] alphabet = new int[26];
 		int plength = pattern.length();
 
-	//	for(int i=0; i<26; i++){
-	//		alphabet[i] = 0;
-	//	}
-
-		Zero(alphabet);
-
-		for(int i=0; i<plength; i++){
-			int idx = pattern.charAt(i);
-			++alphabet[idx-97];
-		}
+		Zero(alphabet, patterns, plength);
 
 		int[] check = new int[26];
 
@@ -41,18 +28,7 @@ public class Streat11_1 {
 				sample[j] = Sarr[i+j];
 			}
 
-		//	for(int j=0; j<26; j++){
-		//		check[j] = 0;
-		//	}
-
-			Zero(check);
-			
-			for(int k =0; k<plength; k++){
-				int idx =sample[k].charAt(0);
-				System.out.println("idx "+idx);
-				++check[idx-97];
-			}
-
+			Zero(check,sample,plength);
 
 			int finalCheck = 0;
 
@@ -62,8 +38,8 @@ public class Streat11_1 {
 					++finalCheck;
 				}
 			}
-			System.out.println("finalCheck "+finalCheck);
-			System.out.println("------------");
+	//		System.out.println("finalCheck "+finalCheck);
+	//		System.out.println("------------");
 			if(finalCheck == plength){
 				++answer;
 			}
@@ -71,12 +47,17 @@ public class Streat11_1 {
 		return answer;
 	}
 
-	public static int[] Zero(int[] arr){
+	public static int[] Zero(int[] check, String[] fixArr, int plength){
 
-		for(int i=0; i<arr.length; i++){
-			arr[i] =0;
+		for(int i=0; i<check.length; i++){
+			check[i] =0;
 		}
 
-		return  arr;
+		for(int k =0; k<plength; k++){
+			int idx =fixArr[k].charAt(0);
+			++check[idx-97];
+		}
+
+		return  check;
 	}
 }
