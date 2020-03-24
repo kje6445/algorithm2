@@ -22,9 +22,11 @@ public class Streat11_1 {
 		int[] alphabet = new int[26];
 		int plength = pattern.length();
 
-		for(int i=0; i<26; i++){
-			alphabet[i] = 0;
-		}
+	//	for(int i=0; i<26; i++){
+	//		alphabet[i] = 0;
+	//	}
+
+		Zero(alphabet);
 
 		for(int i=0; i<plength; i++){
 			int idx = pattern.charAt(i);
@@ -39,10 +41,12 @@ public class Streat11_1 {
 				sample[j] = Sarr[i+j];
 			}
 
-			for(int j=0; j<26; j++){
-				check[j] = 0;
-			}
+		//	for(int j=0; j<26; j++){
+		//		check[j] = 0;
+		//	}
 
+			Zero(check);
+			
 			for(int k =0; k<plength; k++){
 				int idx =sample[k].charAt(0);
 				System.out.println("idx "+idx);
@@ -67,5 +71,12 @@ public class Streat11_1 {
 		return answer;
 	}
 
+	public static int[] Zero(int[] arr){
 
+		for(int i=0; i<arr.length; i++){
+			arr[i] =0;
+		}
+
+		return  arr;
+	}
 }
