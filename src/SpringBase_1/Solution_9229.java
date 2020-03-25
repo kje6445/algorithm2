@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Solution_9229 {
 	public static void main(String args[]) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		//배열이 같거나 증가하는 오름차순이 같거나 감소하는 내림차순으로 정렬
+
 		int testCase = Integer.parseInt(br.readLine());
 		for (int i = 1; i <= testCase; i++) {
 			String str = br.readLine();
@@ -25,13 +25,15 @@ public class Solution_9229 {
 
 			Arrays.sort(snackArr);
 			int idx;
+			int ableWeight = -1;
 			for(int k=0; k<snackArr.length; k++){
 				System.out.println(snackArr[k]+" ");
 				if(maxWeight<snackArr[k]){ //maxWeight보다 작은 것들만 비교할 수 있도록 idx 체크
 					idx = k;
 				}
 			}
-			System.out.println("#"+i+" ");
+			//어떤 합을 정했을 때 가장 클 지에 대해서 생각해보기
+			System.out.println("#"+i+" "+ableWeight);
 		}
 	}
 }
