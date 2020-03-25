@@ -25,7 +25,7 @@ public class Solution_9015 {
 
 			Stack<Integer> stack = new Stack<>();
 			int pre = 0;
-			boolean updown = true;//true면 오름차순, flase면 내림차순
+			int updown = 0;//1면 오름차순, 2면 내림차순
 
 			for(int k=0; k<n; k++){
 				stack.push(arr[k]);
@@ -34,21 +34,49 @@ public class Solution_9015 {
 			Stack<Integer> check = new Stack<>();
 			for(int k=0; k<n; k++){
 				int top = stack.pop();
-				System.out.println("top "+top);
+			//	System.out.println("top "+top);
 				if(check.empty()) {
 					check.push(top);
 				}else{
 					pre = check.peek();
-					System.out.println("pre "+pre);
+			//		System.out.println("pre "+pre);
 					if(top!=pre){
 						check.push(top);
 					}
 				}
 			}
-			for(int k=0; k<check.size(); k++){
-				System.out.println(check.pop());
+
+			if(check.size() == 1){
+				++count;
+			}else {
+				for (int k = 0; k < check.size(); k++) {
+					pre = check.pop();
+					int top = check.peek();
+					System.out.println("pre "+pre+" top "+top);
+					if (pre < top) {//오름차순
+						if(k==0){
+							updown = 1;
+						}
+						else if (updown == 2) {
+							System.out.println("k "+k);
+							++count;
+						}
+						updown = 1;
+					} else {//내림차순
+						if(k==0){
+							updown = 2;
+						}
+						else if (updown == 1) {
+							System.out.println("k "+k);
+							++count;
+						}
+							updown = 2;
+
+					}
+					//		System.out.println(check.pop());
+				}
+				++count;
 			}
-			
 			System.out.println("#"+i+" "+count);
 		}
 	}
