@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Stack;
 
 //배열의 분할
 public class Solution_9015 {
@@ -20,44 +21,35 @@ public class Solution_9015 {
 				arr[k] = Integer.parseInt(numArr[k]);
 			}
 
+			int count =0;
+
+			Stack<Integer> stack = new Stack<>();
+			int pre = 0;
+			boolean updown = true;//true면 오름차순, flase면 내림차순
+
 			for(int k=0; k<n; k++){
-				System.out.printf(" "+arr[k]); // 제대로 입력 받아짐
+				stack.push(arr[k]);
 			}
-			System.out.println("");
-		//	int preNum;
-			int count = 0;
-			int check =0;
-			for(int k=0; k<n-1; k++) {
-				int preNum = arr[k];
-				int p = k+1;
-				int postNum = arr[p];
 
-			//	System.out.println("k "+k+" preNum "+preNum +" postNum "+ postNum);
-
-				if(preNum == postNum){ //다음 수랑 값이 같을 경우
-
-				}else if(preNum < postNum){//다음 수가 증가
-					if(check != 1){
-						count++;
+			Stack<Integer> check = new Stack<>();
+			for(int k=0; k<n; k++){
+				int top = stack.pop();
+				System.out.println("top "+top);
+				if(check.empty()) {
+					check.push(top);
+				}else{
+					pre = check.peek();
+					System.out.println("pre "+pre);
+					if(top!=pre){
+						check.push(top);
 					}
-					System.out.println("k "+k+" check "+check);
-					check = 1;
-					System.out.println("After k1 "+k+" check "+check);
-				}else{//다음 수가 감소
-					if(check != 3){
-						count++;
-					}
-					System.out.println("k "+k+" check "+check);
-					check = 3;
-					System.out.println("After k2 "+k+" check "+check);
 				}
-				System.out.println("k "+k+" count "+count);
 			}
-
-			if(count ==0)
-				count++;
-
-			System.out.printf("#"+i+" "+count);
+			for(int k=0; k<check.size(); k++){
+				System.out.println(check.pop());
+			}
+			
+			System.out.println("#"+i+" "+count);
 		}
 	}
 }
