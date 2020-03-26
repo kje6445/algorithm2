@@ -1,39 +1,66 @@
 package SpringBase_1;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Arrays;
+import java.util.StringTokenizer;
 
 //한빈이와 Spot Mart
 public class Solution_9229 {
-	public static void main(String args[]) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		int testCase = Integer.parseInt(br.readLine());
-		for (int i = 1; i <= testCase; i++) {
-			String str = br.readLine();
-			int num = str.charAt(0);
-			int maxWeight = str.charAt(1);
+		static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		static StringTokenizer st = null;
+		static StringBuilder sb = new StringBuilder();
 
-			String[] snacks = br.readLine().split(" ");
-			int[] snackArr = new int[snacks.length];
+		static int n,m;
+		static int[] weight;
+		static int ans;
 
-			for(int k=0; k<snackArr.length; k++){
-				snackArr[k] = Integer.parseInt(snacks[k]);
+		public static void main(String[] args) throws NumberFormatException, IOException {
+
+			int T = Integer.parseInt(br.readLine());
+			for (int tc = 1; tc <= T; tc++) {
+				st = new StringTokenizer(br.readLine());
+				n = Integer.parseInt(st.nextToken());
+				m = Integer.parseInt(st.nextToken());
+				weight = new int[n];
+
+				st = new StringTokenizer(br.readLine());
+				for (int i = 0; i < n; i++) {
+					weight[i] = Integer.parseInt(st.nextToken());
+				}
+				Arrays.sort(weight);
+//          System.out.println(Arrays.toString(weight));
+
+				ans = -1;
+
+				for (int first = 0; first < n; first++) {
+					if(weight[first] < m) {
+						selectNext(first, weight[first]);
+						if(ans==m) break;
+					}else {
+						break;
+					}
+				}
+
+				sb.append("#" + tc + " " + ans + "\n");
 			}
+			bw.write(sb.toString());
+			bw.flush();
+		}
 
-			Arrays.sort(snackArr);
-			int idx;
-			int ableWeight = -1;
-			for(int k=0; k<snackArr.length; k++){
-				System.out.println(snackArr[k]+" ");
-				if(maxWeight<snackArr[k]){ //maxWeight보다 작은 것들만 비교할 수 있도록 idx 체크
-					idx = k;
+		private static void selectNext(int first, int sum) {
+			for (int second = first+1; second < n; second++) {
+				int tmp = sum;
+				tmp += weight[second];
+				if(tmp > m) {
+					return;
+				} else if(tmp > ans) {
+					ans = tmp;
 				}
 			}
-			//어떤 합을 정했을 때 가장 클 지에 대해서 생각해보기
-			System.out.println("#"+i+" "+ableWeight);
+
 		}
+
 	}
-}
+
