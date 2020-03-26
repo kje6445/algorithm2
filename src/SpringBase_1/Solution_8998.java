@@ -19,6 +19,8 @@ public class Solution_8998 {
 				String[] words = br.readLine().split(" ");
 				int days = Integer.parseInt(words[0]);
 				int deadLine = Integer.parseInt(words[1]);
+
+				int k = words.length;
 			}
 
 			System.out.println("#"+i+" "+max);
