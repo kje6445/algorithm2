@@ -30,7 +30,7 @@ public class Solution_9229 {
 					weight[i] = Integer.parseInt(st.nextToken());
 				}
 				Arrays.sort(weight);
-//          System.out.println(Arrays.toString(weight));
+                System.out.println(Arrays.toString(weight));
 
 				ans = -1;
 
